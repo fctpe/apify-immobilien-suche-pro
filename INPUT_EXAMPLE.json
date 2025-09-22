@@ -1,0 +1,163 @@
+{
+  "_comment": "Example input configurations for Immobiliensuche Pro",
+
+  "basic_url_search": {
+    "searchUrls": [
+      {
+        "url": "https://www.immobilienscout24.de/Suche/de/berlin/wohnung-mieten?price=0-1500&livingspace=50-"
+      }
+    ],
+    "maxResults": 500,
+    "dedupeLevel": "cross_portal"
+  },
+
+  "berlin_apartments_tracking": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "rent",
+        "propertyTypes": ["apartment"],
+        "regions": ["Berlin"],
+        "priceMax": 1800,
+        "sizeMin": 60,
+        "roomsMin": 2
+      }
+    ],
+    "maxResults": 1000,
+    "trackingMode": true,
+    "notifications": {
+      "emails": ["alerts@yourdomain.de"],
+      "events": ["NEW", "PRICE_CHANGE"]
+    },
+    "dedupeLevel": "cross_portal"
+  },
+
+  "nrw_houses_for_sale": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "sale",
+        "propertyTypes": ["house"],
+        "regions": ["Nordrhein-Westfalen"],
+        "priceMin": 300000,
+        "priceMax": 600000,
+        "sizeMin": 120
+      }
+    ],
+    "maxResults": 2000,
+    "trackingMode": false,
+    "dedupeLevel": "cross_portal",
+    "complianceMode": true
+  },
+
+  "munich_investment_properties": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "rent",
+        "propertyTypes": ["apartment", "house"],
+        "regions": ["München"],
+        "sizeMin": 80,
+        "roomsMin": 3
+      }
+    ],
+    "notifications": {
+      "webhookUrl": "https://your-crm.com/leads",
+      "events": ["NEW"]
+    },
+    "trackingMode": true,
+    "maxResults": 1500
+  },
+
+  "multi_city_comparison": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "rent",
+        "propertyTypes": ["apartment"],
+        "regions": ["Berlin", "Hamburg", "München", "Köln", "Frankfurt am Main"],
+        "priceMax": 2000,
+        "sizeMin": 70,
+        "roomsMin": 2,
+        "roomsMax": 4
+      }
+    ],
+    "maxResults": 5000,
+    "dedupeLevel": "cross_portal",
+    "concurrency": 5,
+    "trackingMode": true,
+    "notifications": {
+      "emails": ["research@yourdomain.de"],
+      "events": ["NEW", "PRICE_CHANGE", "STATUS_OFFLINE"]
+    }
+  },
+
+  "comprehensive_market_research": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "rent",
+        "propertyTypes": ["apartment"],
+        "regions": ["Berlin"],
+        "priceMin": 500,
+        "priceMax": 3000,
+        "sizeMin": 30,
+        "postedSinceDays": 7
+      },
+      {
+        "portals": ["immoscout24"],
+        "dealType": "sale",
+        "propertyTypes": ["apartment", "house"],
+        "regions": ["Berlin"],
+        "priceMin": 200000,
+        "priceMax": 1000000,
+        "sizeMin": 50
+      }
+    ],
+    "maxResults": 0,
+    "trackingMode": true,
+    "dedupeLevel": "cross_portal",
+    "notifications": {
+      "emails": ["analysis@yourdomain.de"],
+      "webhookUrl": "https://your-analytics.com/webhook",
+      "events": ["NEW", "PRICE_CHANGE", "DESCRIPTION_UPDATE"]
+    },
+    "complianceMode": true,
+    "debug": false
+  },
+
+  "quick_test_run": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "rent",
+        "propertyTypes": ["apartment"],
+        "regions": ["Berlin"],
+        "priceMax": 1200
+      }
+    ],
+    "maxResults": 50,
+    "dedupeLevel": "none",
+    "complianceMode": true,
+    "debug": true
+  },
+
+  "high_performance_crawl": {
+    "searchBuilders": [
+      {
+        "portals": ["immoscout24"],
+        "dealType": "rent",
+        "propertyTypes": ["apartment"],
+        "regions": ["Deutschland"],
+        "priceMax": 2500,
+        "sizeMin": 40
+      }
+    ],
+    "maxResults": 10000,
+    "concurrency": 8,
+    "dedupeLevel": "cross_portal",
+    "complianceMode": false,
+    "proxyCountry": "DE",
+    "debug": false
+  }
+}

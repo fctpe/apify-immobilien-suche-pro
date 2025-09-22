@@ -1,0 +1,463 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "title": "German Real Estate Listings",
+    "description": "Normalized real estate listings from German portals with cross-portal deduplication",
+    "type": "object",
+    "properties": {
+      "id": {
+        "title": "Canonical ID",
+        "type": "string",
+        "description": "Unique canonical identifier across all portals",
+        "example": "de_ber_12345_apt_rent_a1b2c3d4"
+      },
+      "source": {
+        "title": "Source Portal",
+        "type": "string",
+        "description": "Original portal where listing was found",
+        "example": "immoscout24"
+      },
+      "sourceId": {
+        "title": "Source ID",
+        "type": "string",
+        "description": "Portal-specific listing identifier",
+        "example": "123456789"
+      },
+      "url": {
+        "title": "Listing URL",
+        "type": "string",
+        "description": "Direct link to the listing",
+        "example": "https://www.immobilienscout24.de/expose/123456789"
+      },
+      "title": {
+        "title": "Listing Title",
+        "type": "string",
+        "description": "Property title from the portal",
+        "example": "Moderne 3-Zimmer-Wohnung in Berlin-Mitte"
+      },
+      "description": {
+        "title": "Description",
+        "type": "string",
+        "description": "Property description text"
+      },
+      "propertyType": {
+        "title": "Property Type",
+        "type": "string",
+        "description": "Normalized property type",
+        "example": "apartment"
+      },
+      "dealType": {
+        "title": "Deal Type",
+        "type": "string",
+        "description": "Rent or sale transaction",
+        "example": "rent"
+      },
+      "price": {
+        "title": "Price Information",
+        "type": "object",
+        "description": "Normalized pricing details",
+        "properties": {
+          "total": {
+            "title": "Total Price",
+            "type": "number",
+            "description": "Main price in EUR",
+            "example": 1200
+          },
+          "currency": {
+            "title": "Currency",
+            "type": "string",
+            "description": "Price currency",
+            "example": "EUR"
+          },
+          "type": {
+            "title": "Price Type",
+            "type": "string",
+            "description": "Kaltmiete, Warmmiete, or Kaufpreis",
+            "example": "kalt"
+          },
+          "extra": {
+            "title": "Additional Costs",
+            "type": "object",
+            "description": "Breakdown of additional costs",
+            "properties": {
+              "nebenkosten": {
+                "title": "Nebenkosten",
+                "type": "number",
+                "example": 150
+              },
+              "kaution": {
+                "title": "Kaution",
+                "type": "number",
+                "example": 2400
+              },
+              "provision": {
+                "title": "Provision",
+                "type": "number",
+                "example": 1200
+              },
+              "hausgeld": {
+                "title": "Hausgeld",
+                "type": "number",
+                "example": 200
+              }
+            }
+          }
+        }
+      },
+      "size": {
+        "title": "Size Information",
+        "type": "object",
+        "description": "Property dimensions",
+        "properties": {
+          "livingSqm": {
+            "title": "Living Space (㎡)",
+            "type": "number",
+            "description": "Living space in square meters",
+            "example": 85.5
+          },
+          "plotSqm": {
+            "title": "Plot Size (㎡)",
+            "type": "number",
+            "description": "Plot size for houses/land"
+          }
+        }
+      },
+      "rooms": {
+        "title": "Number of Rooms",
+        "type": "number",
+        "description": "Total number of rooms",
+        "example": 3
+      },
+      "floor": {
+        "title": "Floor",
+        "type": "number",
+        "description": "Floor number",
+        "example": 2
+      },
+      "yearBuilt": {
+        "title": "Year Built",
+        "type": "number",
+        "description": "Construction year",
+        "example": 1995
+      },
+      "condition": {
+        "title": "Property Condition",
+        "type": "string",
+        "description": "Normalized condition description",
+        "example": "renovated"
+      },
+      "address": {
+        "title": "Address Information",
+        "type": "object",
+        "description": "Normalized address components",
+        "properties": {
+          "raw": {
+            "title": "Raw Address",
+            "type": "string",
+            "description": "Original address string",
+            "example": "Unter den Linden 1, 10117 Berlin"
+          },
+          "street": {
+            "title": "Street",
+            "type": "string",
+            "example": "Unter den Linden"
+          },
+          "houseNo": {
+            "title": "House Number",
+            "type": "string",
+            "example": "1"
+          },
+          "postcode": {
+            "title": "Postcode",
+            "type": "string",
+            "example": "10117"
+          },
+          "city": {
+            "title": "City",
+            "type": "string",
+            "example": "Berlin"
+          },
+          "state": {
+            "title": "State (Bundesland)",
+            "type": "string",
+            "example": "Berlin"
+          },
+          "country": {
+            "title": "Country",
+            "type": "string",
+            "example": "DE"
+          }
+        }
+      },
+      "geo": {
+        "title": "Geographic Coordinates",
+        "type": "object",
+        "description": "Location coordinates",
+        "properties": {
+          "lat": {
+            "title": "Latitude",
+            "type": "number",
+            "example": 52.5170
+          },
+          "lng": {
+            "title": "Longitude",
+            "type": "number",
+            "example": 13.3888
+          }
+        }
+      },
+      "features": {
+        "title": "Property Features",
+        "type": "array",
+        "description": "Normalized list of property features",
+        "items": {
+          "type": "string"
+        },
+        "example": ["balcony", "elevator", "parking"]
+      },
+      "images": {
+        "title": "Image URLs",
+        "type": "array",
+        "description": "Property image URLs",
+        "items": {
+          "type": "string"
+        }
+      },
+      "contact": {
+        "title": "Contact Information",
+        "type": "object",
+        "description": "Listing contact details",
+        "properties": {
+          "name": {
+            "title": "Contact Name",
+            "type": "string",
+            "example": "Max Mustermann"
+          },
+          "phone": {
+            "title": "Phone Number",
+            "type": "string",
+            "example": "+49 30 12345678"
+          },
+          "agency": {
+            "title": "Agency Name",
+            "type": "string",
+            "example": "Immobilien Mustermann GmbH"
+          }
+        }
+      },
+      "energy": {
+        "title": "Energy Information",
+        "type": "object",
+        "description": "Energy efficiency details",
+        "properties": {
+          "efficiencyClass": {
+            "title": "Efficiency Class",
+            "type": "string",
+            "example": "B"
+          },
+          "consumption": {
+            "title": "Energy Consumption",
+            "type": "number",
+            "example": 85.5
+          },
+          "heatingType": {
+            "title": "Heating Type",
+            "type": "string",
+            "example": "gas"
+          }
+        }
+      },
+      "dates": {
+        "title": "Listing Dates",
+        "type": "object",
+        "description": "Important timestamps",
+        "properties": {
+          "postedAt": {
+            "title": "Posted Date",
+            "type": "string",
+            "description": "When listing was first posted (ISO format)",
+            "example": "2024-01-15T10:30:00Z"
+          },
+          "updatedAt": {
+            "title": "Last Updated",
+            "type": "string",
+            "description": "When listing was last updated (ISO format)",
+            "example": "2024-01-20T14:22:00Z"
+          },
+          "extractedAt": {
+            "title": "Extraction Date",
+            "type": "string",
+            "description": "When we extracted this data (ISO format)",
+            "example": "2024-01-22T09:15:00Z"
+          }
+        }
+      },
+      "computed": {
+        "title": "Computed Metrics",
+        "type": "object",
+        "description": "Calculated values for analysis",
+        "properties": {
+          "pricePerSqm": {
+            "title": "Price per ㎡",
+            "type": "number",
+            "description": "Price per square meter",
+            "example": 14.04
+          },
+          "totalMonthlyCost": {
+            "title": "Total Monthly Cost",
+            "type": "number",
+            "description": "Kalt + Nebenkosten for rentals",
+            "example": 1350
+          }
+        }
+      },
+      "dedupe": {
+        "title": "Deduplication Info",
+        "type": "object",
+        "description": "Cross-portal deduplication metadata",
+        "properties": {
+          "fingerprints": {
+            "title": "Fingerprints",
+            "type": "array",
+            "description": "Hashes used for deduplication",
+            "items": {
+              "type": "string"
+            }
+          },
+          "alternativeSources": {
+            "title": "Alternative Sources",
+            "type": "array",
+            "description": "Other portals where this listing appears",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "sourceId": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "raw": {
+        "title": "Raw Data",
+        "type": "object",
+        "description": "Minimal raw data for debugging and audit"
+      }
+    },
+    "required": ["id", "source", "url", "title", "dealType", "propertyType", "dates"],
+    "additionalProperties": false
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "description": "Main listing overview with key details",
+      "transformation": {
+        "fields": [
+          "title",
+          "source",
+          "propertyType",
+          "dealType",
+          "price.total",
+          "price.type",
+          "size.livingSqm",
+          "rooms",
+          "address.city",
+          "address.postcode",
+          "computed.pricePerSqm",
+          "dates.postedAt",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": { "label": "Property" },
+          "source": { "label": "Portal" },
+          "propertyType": { "label": "Type" },
+          "dealType": { "label": "Deal" },
+          "price.total": { "label": "Price (€)", "format": "number" },
+          "price.type": { "label": "Price Type" },
+          "size.livingSqm": { "label": "Size (㎡)", "format": "number" },
+          "rooms": { "label": "Rooms", "format": "number" },
+          "address.city": { "label": "City" },
+          "address.postcode": { "label": "PLZ" },
+          "computed.pricePerSqm": { "label": "€/㎡", "format": "number" },
+          "dates.postedAt": { "label": "Posted", "format": "date" },
+          "url": { "label": "Link", "format": "link" }
+        }
+      }
+    },
+    "financial": {
+      "title": "Financial Analysis",
+      "description": "Focus on pricing and costs",
+      "transformation": {
+        "fields": [
+          "title",
+          "price.total",
+          "price.type",
+          "price.extra.nebenkosten",
+          "price.extra.kaution",
+          "price.extra.provision",
+          "computed.pricePerSqm",
+          "computed.totalMonthlyCost",
+          "size.livingSqm",
+          "address.city"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": { "label": "Property" },
+          "price.total": { "label": "Base Price (€)", "format": "number" },
+          "price.type": { "label": "Type" },
+          "price.extra.nebenkosten": { "label": "Nebenkosten (€)", "format": "number" },
+          "price.extra.kaution": { "label": "Kaution (€)", "format": "number" },
+          "computed.totalMonthlyCost": { "label": "Total Monthly (€)", "format": "number" },
+          "computed.pricePerSqm": { "label": "Price/㎡", "format": "number" },
+          "size.livingSqm": { "label": "Size (㎡)", "format": "number" },
+          "address.city": { "label": "City" }
+        }
+      }
+    },
+    "geographic": {
+      "title": "Geographic Distribution",
+      "description": "Location-focused view with coordinates",
+      "transformation": {
+        "fields": [
+          "title",
+          "address.street",
+          "address.city",
+          "address.postcode",
+          "address.state",
+          "geo.lat",
+          "geo.lng",
+          "price.total",
+          "computed.pricePerSqm",
+          "source"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": { "label": "Property" },
+          "address.street": { "label": "Street" },
+          "address.city": { "label": "City" },
+          "address.postcode": { "label": "PLZ" },
+          "address.state": { "label": "State" },
+          "geo.lat": { "label": "Latitude", "format": "number" },
+          "geo.lng": { "label": "Longitude", "format": "number" },
+          "price.total": { "label": "Price (€)", "format": "number" },
+          "computed.pricePerSqm": { "label": "€/㎡", "format": "number" },
+          "source": { "label": "Portal" }
+        }
+      }
+    }
+  }
+}

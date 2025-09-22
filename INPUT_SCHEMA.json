@@ -1,0 +1,204 @@
+{
+  "title": "Immobiliensuche Pro Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "searchUrls": {
+      "title": "Search URLs",
+      "type": "array",
+      "description": "Paste search URLs from ImmobilienScout24, Immonet, or Immowelt to scrape specific searches",
+      "editor": "requestListSources",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "pattern": "https://(www\\.)?(immobilienscout24\\.de|immonet\\.de|immowelt\\.de)/.*"
+          }
+        }
+      }
+    },
+    "searchBuilders": {
+      "title": "Search Builders",
+      "type": "array",
+      "description": "Build custom searches programmatically across portals",
+      "items": {
+        "type": "object",
+        "properties": {
+          "portals": {
+            "title": "Portals",
+            "type": "array",
+            "description": "Which portals to search",
+            "items": {
+              "type": "string",
+              "enum": ["immoscout24", "immonet", "immowelt"]
+            },
+            "default": ["immoscout24", "immonet", "immowelt"]
+          },
+          "dealType": {
+            "title": "Deal Type",
+            "type": "string",
+            "description": "Rent or purchase",
+            "enum": ["rent", "sale"],
+            "default": "rent",
+            "editor": "select"
+          },
+          "propertyTypes": {
+            "title": "Property Types",
+            "type": "array",
+            "description": "Types of properties to search for",
+            "items": {
+              "type": "string",
+              "enum": ["apartment", "house", "land", "commercial"]
+            },
+            "default": ["apartment", "house"]
+          },
+          "regions": {
+            "title": "Regions",
+            "type": "array",
+            "description": "Cities or regions to search (e.g., Berlin, München, Nordrhein-Westfalen)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "radiusKm": {
+            "title": "Search Radius (km)",
+            "type": "number",
+            "description": "Search radius around specified regions",
+            "minimum": 0,
+            "maximum": 200,
+            "default": 0
+          },
+          "priceMin": {
+            "title": "Minimum Price (€)",
+            "type": "number",
+            "description": "Minimum price in EUR",
+            "minimum": 0,
+            "default": 0
+          },
+          "priceMax": {
+            "title": "Maximum Price (€)",
+            "type": "number",
+            "description": "Maximum price in EUR",
+            "minimum": 0,
+            "default": 0
+          },
+          "sizeMin": {
+            "title": "Minimum Size (㎡)",
+            "type": "number",
+            "description": "Minimum living space in square meters",
+            "minimum": 0,
+            "default": 0
+          },
+          "roomsMin": {
+            "title": "Minimum Rooms",
+            "type": "number",
+            "description": "Minimum number of rooms",
+            "minimum": 0,
+            "default": 0
+          },
+          "roomsMax": {
+            "title": "Maximum Rooms",
+            "type": "number",
+            "description": "Maximum number of rooms",
+            "minimum": 0,
+            "default": 0
+          },
+          "postedSinceDays": {
+            "title": "Posted Since (Days)",
+            "type": "number",
+            "description": "Only show listings posted within the last N days",
+            "minimum": 0,
+            "default": 0
+          }
+        }
+      }
+    },
+    "maxResults": {
+      "title": "Maximum Results",
+      "type": "number",
+      "description": "Maximum number of listings to extract (0 = unlimited)",
+      "minimum": 0,
+      "default": 1000
+    },
+    "trackingMode": {
+      "title": "Enable Change Tracking",
+      "type": "boolean",
+      "description": "Track changes between runs (new listings, price changes, offline status)",
+      "default": false,
+      "editor": "checkbox"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "type": "object",
+      "description": "Configure alerts for changes",
+      "properties": {
+        "emails": {
+          "title": "Email Addresses",
+          "type": "array",
+          "description": "Email addresses to notify of changes",
+          "items": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "webhookUrl": {
+          "title": "Webhook URL",
+          "type": "string",
+          "description": "HTTP endpoint to POST change notifications",
+          "format": "uri"
+        },
+        "events": {
+          "title": "Notification Events",
+          "type": "array",
+          "description": "Which events to get notified about",
+          "items": {
+            "type": "string",
+            "enum": ["NEW", "PRICE_CHANGE", "STATUS_OFFLINE", "DESCRIPTION_UPDATE"]
+          },
+          "default": ["NEW", "PRICE_CHANGE"]
+        }
+      }
+    },
+    "dedupeLevel": {
+      "title": "Deduplication Level",
+      "type": "string",
+      "description": "How aggressively to deduplicate listings",
+      "enum": ["none", "portal", "cross_portal"],
+      "default": "cross_portal",
+      "editor": "select"
+    },
+    "concurrency": {
+      "title": "Concurrency",
+      "type": "number",
+      "description": "Number of parallel browser sessions (higher = faster but more detectable)",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 3
+    },
+    "proxyCountry": {
+      "title": "Proxy Country",
+      "type": "string",
+      "description": "Proxy country for geo-localized results",
+      "enum": ["DE", "AUTO"],
+      "default": "DE",
+      "editor": "select"
+    },
+    "complianceMode": {
+      "title": "Compliance Mode",
+      "type": "boolean",
+      "description": "Enable strict compliance mode (slower but respects robots.txt and crawl delays)",
+      "default": true,
+      "editor": "checkbox"
+    },
+    "debug": {
+      "title": "Debug Mode",
+      "type": "boolean",
+      "description": "Enable detailed logging and save HTML snapshots on failures",
+      "default": false,
+      "editor": "checkbox"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

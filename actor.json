@@ -1,0 +1,27 @@
+{
+  "actorSpecification": 1,
+  "name": "immobiliensuche-pro",
+  "title": "Immobiliensuche Pro - DE Real Estate Aggregator",
+  "description": "Advanced German real estate aggregator for ImmobilienScout24, Immonet & Immowelt. Cross-portal search with deduplication, normalized pricing (kalt/warm), change tracking, and webhooks. Pay per result.",
+  "version": "1.0.0",
+  "build": {
+    "tag": "latest"
+  },
+  "environmentVariables": {},
+  "meta": {
+    "templateId": "javascript-node"
+  },
+  "input": "./INPUT_SCHEMA.json",
+  "readme": "./README.md",
+  "datasetSchema": "./DATASET_SCHEMA.json",
+  "storefront": {
+    "brandingColor": "#007bff",
+    "categories": ["ECOMMERCE", "DEVELOPER_TOOLS"],
+    "shortDescription": "One search, three portals, zero duplicates. German real estate with normalized fields, price/㎡, and change tracking.",
+    "longDescription": "Immobiliensuche Pro aggregates listings from Germany's top real estate portals (ImmobilienScout24, Immonet, Immowelt) with intelligent deduplication and normalized data. Features include cross-portal search, price normalization (kalt/warm/kaufpreis), computed metrics (price per ㎡), change tracking for new listings and price updates, and webhook/email notifications. Perfect for real estate professionals, investors, and researchers who need comprehensive market data.",
+    "supportUrl": "mailto:kontakt@barrierefix.de",
+    "isDeprecated": false,
+    "pricing": "paid",
+    "pricingModel": "per-event"
+  }
+}
