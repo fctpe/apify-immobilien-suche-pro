@@ -1,0 +1,23 @@
+{
+  "quickSearch": "Young Professional",
+  "searchBuilders": [
+    {
+      "dealType": "rent",
+      "regions": ["Berlin"],
+      "priceMax": 1500,
+      "sizeMin": 50,
+      "roomsMin": 2,
+      "features": ["balcony"],
+      "furnished": "any",
+      "radiusKm": 10
+    }
+  ],
+  "maxResults": 5,
+  "trackingMode": false,
+  "removeDuplicates": true,
+  "advancedOptions": {
+    "debug": true,
+    "headless": false,
+    "concurrency": 1
+  }
+}

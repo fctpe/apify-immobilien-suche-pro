@@ -1,0 +1,187 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "title": "Deutsche Immobilienanzeigen",
+    "description": "Vereinfachte Immobilienanzeigen von deutschen Portalen für bessere Lesbarkeit",
+    "type": "object",
+    "properties": {
+      "source": {
+        "title": "Quelle",
+        "type": "string",
+        "description": "Portal, auf dem die Anzeige gefunden wurde",
+        "example": "immoscout24"
+      },
+      "sourceId": {
+        "title": "Quell-ID",
+        "type": "string",
+        "description": "Portal-spezifische Anzeigen-Kennung",
+        "example": "123456789"
+      },
+      "url": {
+        "title": "URL",
+        "type": "string",
+        "description": "Direkter Link zur Anzeige",
+        "example": "https://www.immobilienscout24.de/expose/123456789"
+      },
+      "title": {
+        "title": "Titel",
+        "type": "string",
+        "description": "Immobilientitel",
+        "example": "Moderne 3-Zimmer-Wohnung in Berlin-Mitte"
+      },
+      "description": {
+        "title": "Beschreibung",
+        "type": "string",
+        "description": "Immobilienbeschreibung"
+      },
+      "propertyType": {
+        "title": "Immobilientyp",
+        "type": "string",
+        "description": "Art der Immobilie",
+        "example": "Wohnung"
+      },
+      "dealType": {
+        "title": "Angebotsart",
+        "type": "string",
+        "description": "Miete oder Kauf",
+        "example": "Miete"
+      },
+      "address": {
+        "title": "Adresse",
+        "type": "string",
+        "description": "Vollständige formatierte Adresse",
+        "example": "Unter den Linden 1, 10117 Berlin"
+      },
+      "price": {
+        "title": "Preis",
+        "type": "number",
+        "description": "Preis in EUR",
+        "example": 1200
+      },
+      "size": {
+        "title": "Größe",
+        "type": "number",
+        "description": "Wohnfläche in Quadratmetern",
+        "example": 85.5
+      },
+      "rooms": {
+        "title": "Zimmer",
+        "type": "number",
+        "description": "Anzahl der Zimmer",
+        "example": 3
+      },
+      "floor": {
+        "title": "Etage",
+        "type": "number",
+        "description": "Stockwerk",
+        "example": 2
+      },
+      "yearBuilt": {
+        "title": "Baujahr",
+        "type": "number",
+        "description": "Baujahr der Immobilie",
+        "example": 1995
+      },
+      "condition": {
+        "title": "Zustand",
+        "type": "string",
+        "description": "Zustand der Immobilie",
+        "example": "renoviert"
+      },
+      "pricePerSqm": {
+        "title": "Preis pro m²",
+        "type": "number",
+        "description": "Preis pro Quadratmeter in EUR",
+        "example": 14.04
+      },
+      "features": {
+        "title": "Ausstattung",
+        "type": "array",
+        "description": "Ausstattungsmerkmale der Immobilie",
+        "items": {
+          "type": "string"
+        },
+        "example": ["Balkon", "Aufzug", "Parkplatz"]
+      },
+      "images": {
+        "title": "Bilder",
+        "type": "array",
+        "description": "URLs der Immobilienbilder",
+        "items": {
+          "type": "string"
+        }
+      },
+      "contactName": {
+        "title": "Kontaktperson",
+        "type": "string",
+        "description": "Name der Kontaktperson",
+        "example": "Max Mustermann"
+      },
+      "contactPhone": {
+        "title": "Telefon",
+        "type": "string",
+        "description": "Telefonnummer des Anbieters",
+        "example": "+49 30 12345678"
+      },
+      "contactAgency": {
+        "title": "Immobilienbüro",
+        "type": "string",
+        "description": "Name des Immobilienbüros",
+        "example": "Immobilien Mustermann GmbH"
+      },
+      "postedDate": {
+        "title": "Inseratsdatum",
+        "type": "string",
+        "description": "Datum der Anzeigenschaltung",
+        "example": "2024-01-15"
+      },
+      "extractedDate": {
+        "title": "Extraktionsdatum",
+        "type": "string",
+        "description": "Zeitpunkt der Datenextraktion",
+        "example": "2024-01-22T09:15:00Z"
+      }
+    },
+    "required": ["source", "sourceId", "url", "title", "dealType", "propertyType"],
+    "additionalProperties": false
+  },
+  "views": {
+    "overview": {
+      "title": "Übersicht",
+      "description": "Hauptübersicht der Immobilienanzeigen mit wichtigsten Details",
+      "transformation": {
+        "fields": [
+          "title",
+          "address",
+          "price",
+          "size",
+          "rooms",
+          "propertyType",
+          "dealType",
+          "pricePerSqm",
+          "source",
+          "sourceId",
+          "postedDate",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": { "label": "Titel" },
+          "address": { "label": "Adresse" },
+          "price": { "label": "Preis (€)", "format": "number" },
+          "size": { "label": "Größe (m²)", "format": "number" },
+          "rooms": { "label": "Zimmer", "format": "number" },
+          "propertyType": { "label": "Immobilientyp" },
+          "dealType": { "label": "Angebotsart" },
+          "pricePerSqm": { "label": "€/m²", "format": "number" },
+          "source": { "label": "Quelle" },
+          "sourceId": { "label": "Quell-ID" },
+          "postedDate": { "label": "Inseratsdatum", "format": "date" },
+          "url": { "label": "URL", "format": "link" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "title": "Deutsche Immobiliensuche",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "quickSearch": {
+      "title": "Schnellsuche-Vorlagen",
+      "type": "string",
+      "description": "Wählen Sie eine Vorlage für häufige Suchanfragen oder wählen Sie 'Benutzerdefiniert' für eine individuelle Suche",
+      "enum": ["Studentenzimmer", "Berufseinsteiger", "Familienwohnung", "Luxusimmobilie", "Kapitalanlage", "Benutzerdefiniert"],
+      "default": "Berufseinsteiger",
+      "editor": "select"
+    },
+    "searchBuilders": {
+      "title": "🔍 Sucheinstellungen",
+      "type": "array",
+      "description": "Konfigurieren Sie Ihre Immobiliensuchkriterien",
+      "default": [
+        {
+          "dealType": "rent",
+          "regions": ["Berlin"],
+          "priceMax": 1500,
+          "sizeMin": 50,
+          "roomsMin": 2,
+          "furnished": null,
+          "features": []
+        }
+      ],
+      "editor": "json",
+      "items": {
+        "type": "object",
+        "properties": {
+          "regions": {
+            "title": "📍 Standort",
+            "type": "array",
+            "description": "Welche Städte oder Gebiete durchsuchen (z.B. Berlin, München, Hamburg)",
+            "items": {
+              "type": "string"
+            },
+            "editor": "stringList"
+          },
+          "dealType": {
+            "title": "🏠 Ich suche",
+            "type": "string",
+            "description": "Suchen Sie eine Mietwohnung oder möchten Sie kaufen?",
+            "enum": ["rent", "sale"],
+            "editor": "select"
+          },
+          "propertyTypes": {
+            "title": "🏢 Immobilientyp",
+            "type": "array",
+            "description": "Welchen Typ von Immobilie suchen Sie?",
+            "editor": "select",
+            "items": {
+              "type": "string",
+              "enum": ["apartment", "house", "land", "commercial"]
+            }
+          },
+          "priceMax": {
+            "title": "💰 Maximales Budget (€)",
+            "type": "integer",
+            "description": "Wie viel möchten Sie maximal ausgeben? (pro Monat für Miete, gesamt für Kauf)",
+            "minimum": 0,
+            "editor": "number"
+          },
+          "priceMin": {
+            "title": "💵 Minimales Budget (€)",
+            "type": "integer",
+            "description": "Optional: Mindestpreis festlegen, um sehr günstige Immobilien auszufiltern",
+            "minimum": 0,
+            "editor": "number"
+          },
+          "radiusKm": {
+            "title": "🗺️ Suchradius",
+            "type": "integer",
+            "description": "Wie weit vom gewählten Standort? (in Kilometern)",
+            "minimum": 0,
+            "maximum": 200,
+            "editor": "number"
+          },
+          "sizeMin": {
+            "title": "📏 Mindestgröße (m²)",
+            "type": "integer",
+            "description": "Wie viel Wohnfläche benötigen Sie? (Quadratmeter)",
+            "minimum": 0,
+            "editor": "number"
+          },
+          "roomsMin": {
+            "title": "🚪 Mindestzimmer",
+            "type": "integer",
+            "description": "Wie viele Zimmer benötigen Sie? (inkl. Schlafzimmer + Wohnzimmer)",
+            "minimum": 0,
+            "editor": "number"
+          },
+          "roomsMax": {
+            "title": "🚪 Maximalzimmer",
+            "type": "integer",
+            "description": "Optional: Maximale Anzahl Zimmer (leer lassen für unbegrenzt)",
+            "minimum": 0,
+            "editor": "number"
+          },
+          "furnished": {
+            "title": "🛋️ Möblierung",
+            "type": "string",
+            "description": "Möchten Sie möbliert oder unmöbliert?",
+            "enum": ["any", "furnished", "unfurnished", "partly_furnished"],
+            "editor": "select"
+          },
+          "features": {
+            "title": "✨ Gewünschte Ausstattung",
+            "type": "array",
+            "description": "Welche Ausstattungsmerkmale sind Ihnen wichtig?",
+            "editor": "select",
+            "items": {
+              "type": "string",
+              "enum": ["balcony", "garden", "parking", "elevator", "pets_allowed", "dishwasher", "washing_machine"]
+            }
+          },
+          "postedSinceDays": {
+            "title": "🆕 Nur aktuelle Anzeigen",
+            "type": "integer",
+            "description": "Nur Anzeigen der letzten X Tage anzeigen (leer lassen für alle Anzeigen)",
+            "minimum": 1,
+            "maximum": 90,
+            "editor": "number"
+          }
+        },
+        "required": ["regions", "dealType"]
+      }
+    },
+    "maxResults": {
+      "title": "📋 Maximale Ergebnisse",
+      "type": "integer",
+      "description": "Wie viele Immobilien möchten Sie finden? (höhere Zahlen dauern länger)",
+      "minimum": 1,
+      "maximum": 5000,
+      "default": 100,
+      "editor": "number"
+    },
+    "trackingMode": {
+      "title": "🔔 Bei Änderungen benachrichtigen",
+      "type": "boolean",
+      "description": "Benachrichtigungen über neue Anzeigen, Preisänderungen oder offline Immobilien erhalten",
+      "default": false,
+      "editor": "checkbox"
+    },
+    "removeDuplicates": {
+      "title": "🗪 Duplikate entfernen",
+      "type": "boolean",
+      "description": "Identische Immobilien von verschiedenen Portalen herausfiltern",
+      "default": true,
+      "editor": "checkbox"
+    },
+    "advancedOptions": {
+      "title": "⚙️ Erweiterte Optionen",
+      "type": "object",
+      "description": "Technische Einstellungen für fortgeschrittene Benutzer",
+      "editor": "json",
+      "properties": {
+        "concurrency": {
+          "title": "Parallele Sitzungen",
+          "type": "integer",
+          "description": "Anzahl paralleler Browser-Sitzungen (höher = schneller aber eher erkennbar)",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "debug": {
+          "title": "Debug-Modus",
+          "type": "boolean",
+          "description": "Detaillierte Protokollierung aktivieren und Screenshots bei Fehlern speichern"
+        },
+        "headless": {
+          "title": "Headless Browser",
+          "type": "boolean",
+          "description": "Browser im Hintergrund ausführen (nur für Debugging deaktivieren)"
+        }
+      }
+    },
+    "searchUrls": {
+      "title": "🔗 Oder direkte URLs verwenden (Experten-Modus)",
+      "type": "array",
+      "description": "Fortgeschrittene Benutzer: Direkte Such-URLs von ImmoScout24 einfügen statt der obigen Filter",
+      "editor": "json",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Such-URL",
+            "type": "string",
+            "description": "Vollständige Such-URL von ImmoScout24 kopiert",
+            "editor": "textfield",
+            "pattern": "https://(www\\.)?immobilienscout24\\.de/.*"
+          }
+        },
+        "required": ["url"]
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

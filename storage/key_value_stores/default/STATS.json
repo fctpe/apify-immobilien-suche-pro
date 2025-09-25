@@ -1,0 +1,10 @@
+{
+  "total_processed": 0,
+  "successful_extractions": 5,
+  "failed_extractions": 0,
+  "duplicates_removed": 0,
+  "start_time": "2025-09-25 08:24:40.162427+00:00",
+  "end_time": "2025-09-25 08:25:14.997717+00:00",
+  "duration_seconds": 34.83529,
+  "success_rate": 500.0
+}

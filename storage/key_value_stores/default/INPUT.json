@@ -1,0 +1,15 @@
+{
+  "maxResults": 5,
+  "trackingMode": false,
+  "dedupeLevel": "cross_portal",
+  "concurrency": 1,
+  "proxyCountry": "DE",
+  "complianceMode": true,
+  "debug": true,
+  "headless": false,
+  "searchUrls": [
+    {
+      "url": "https://www.immobilienscout24.de/Suche/de/berlin/berlin/wohnung-mieten?price=0-1500&livingspace=50-&numberofrooms=2-&radius=10"
+    }
+  ]
+}

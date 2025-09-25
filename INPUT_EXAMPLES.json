@@ -1,0 +1,186 @@
+{
+  "examples": {
+    "student_room_berlin": {
+      "title": "Student Room in Berlin",
+      "description": "Budget-friendly room for students",
+      "input": {
+        "quickSearch": "Student Room",
+        "searchBuilders": [
+          {
+            "regions": ["Berlin"],
+            "dealType": "rent",
+            "priceMax": 800,
+            "sizeMin": 15,
+            "roomsMin": 1,
+            "roomsMax": 2,
+            "features": ["elevator"]
+          }
+        ],
+        "maxResults": 50,
+        "trackingMode": true
+      }
+    },
+    "young_professional_munich": {
+      "title": "Young Professional Apartment in Munich",
+      "description": "Modern apartment for young professionals",
+      "input": {
+        "quickSearch": "Young Professional",
+        "searchBuilders": [
+          {
+            "regions": ["München"],
+            "dealType": "rent",
+            "priceMax": 1500,
+            "sizeMin": 50,
+            "roomsMin": 2,
+            "roomsMax": 3,
+            "features": ["balcony", "parking"],
+            "furnished": null
+          }
+        ],
+        "maxResults": 100,
+        "removeDuplicates": true
+      }
+    },
+    "family_apartment_hamburg": {
+      "title": "Family Apartment in Hamburg",
+      "description": "Spacious apartment for families with children",
+      "input": {
+        "quickSearch": "Family Apartment",
+        "searchBuilders": [
+          {
+            "regions": ["Hamburg"],
+            "dealType": "rent",
+            "priceMax": 2000,
+            "sizeMin": 80,
+            "roomsMin": 3,
+            "features": ["garden", "parking", "elevator"],
+            "radiusKm": 15
+          }
+        ],
+        "maxResults": 75,
+        "trackingMode": true
+      }
+    },
+    "luxury_home_frankfurt": {
+      "title": "Luxury Home in Frankfurt",
+      "description": "High-end property for affluent buyers",
+      "input": {
+        "quickSearch": "Luxury Home",
+        "searchBuilders": [
+          {
+            "regions": ["Frankfurt"],
+            "dealType": "sale",
+            "propertyTypes": ["house"],
+            "priceMin": 800000,
+            "sizeMin": 150,
+            "roomsMin": 4,
+            "features": ["garden", "parking"]
+          }
+        ],
+        "maxResults": 25,
+        "removeDuplicates": true
+      }
+    },
+    "investment_property_cologne": {
+      "title": "Investment Property in Cologne",
+      "description": "Property for investment purposes",
+      "input": {
+        "quickSearch": "Investment Property",
+        "searchBuilders": [
+          {
+            "regions": ["Köln"],
+            "dealType": "sale",
+            "priceMax": 500000,
+            "sizeMin": 40,
+            "roomsMin": 2,
+            "features": ["elevator"]
+          }
+        ],
+        "maxResults": 200,
+        "removeDuplicates": true,
+        "trackingMode": true
+      }
+    },
+    "furnished_apartment_berlin": {
+      "title": "Furnished Apartment in Berlin",
+      "description": "Ready-to-move-in furnished apartment",
+      "input": {
+        "quickSearch": "Custom",
+        "searchBuilders": [
+          {
+            "regions": ["Berlin"],
+            "dealType": "rent",
+            "priceMax": 1800,
+            "sizeMin": 60,
+            "roomsMin": 2,
+            "furnished": "furnished",
+            "features": ["balcony", "dishwasher", "washing_machine"],
+            "postedSinceDays": 7
+          }
+        ],
+        "maxResults": 50,
+        "removeDuplicates": true
+      }
+    },
+    "custom_search_multiple_cities": {
+      "title": "Custom Search Across Multiple Cities",
+      "description": "Flexible search across multiple locations",
+      "input": {
+        "quickSearch": "Custom",
+        "searchBuilders": [
+          {
+            "regions": ["Berlin", "Hamburg", "München"],
+            "dealType": "rent",
+            "priceMax": 1200,
+            "sizeMin": 50,
+            "roomsMin": 2,
+            "features": ["pets_allowed"],
+            "radiusKm": 20
+          }
+        ],
+        "maxResults": 150,
+        "removeDuplicates": true,
+        "trackingMode": true
+      }
+    }
+  },
+  "quick_search_presets": {
+    "Student Room": {
+      "dealType": "rent",
+      "priceMax": 800,
+      "sizeMin": 15,
+      "roomsMin": 1,
+      "roomsMax": 2,
+      "features": []
+    },
+    "Young Professional": {
+      "dealType": "rent",
+      "priceMax": 1500,
+      "sizeMin": 50,
+      "roomsMin": 2,
+      "roomsMax": 3,
+      "features": ["balcony"]
+    },
+    "Family Apartment": {
+      "dealType": "rent",
+      "priceMax": 2000,
+      "sizeMin": 80,
+      "roomsMin": 3,
+      "features": ["garden", "parking"]
+    },
+    "Luxury Home": {
+      "dealType": "sale",
+      "propertyTypes": ["house"],
+      "priceMin": 800000,
+      "sizeMin": 150,
+      "roomsMin": 4,
+      "features": ["garden", "parking"]
+    },
+    "Investment Property": {
+      "dealType": "sale",
+      "sizeMin": 40,
+      "roomsMin": 2,
+      "features": []
+    }
+  }
+}

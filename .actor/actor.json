@@ -1,0 +1,27 @@
+{
+  "actorSpecification": 1,
+  "name": "immobiliensuche-pro",
+  "title": "Immobiliensuche Pro - Deutsche Immobilienportale",
+  "description": "Fortschrittlicher Immobilien-Aggregator für deutsche Portale mit verbesserter Anti-Erkennung. Durchsucht ImmobilienScout24, Immonet & Immowelt mit AWS WAF-Umgehung. Portal-übergreifende Suche mit Duplikaterkennung, normalisierte Preise (kalt/warm), Änderungsverfolgung und Webhooks.",
+  "version": "2.0",
+  "build": {
+    "tag": "latest"
+  },
+  "environmentVariables": {},
+  "meta": {
+    "templateId": "python"
+  },
+  "input": "./INPUT_SCHEMA.json",
+  "readme": "./README.md",
+  "datasetSchema": "./DATASET_SCHEMA.json",
+  "storefront": {
+    "brandingColor": "#007bff",
+    "categories": ["ECOMMERCE", "DEVELOPER_TOOLS"],
+    "shortDescription": "Verbesserter Immobilien-Scraper mit Anti-Erkennung für deutsche Portale. Umgeht AWS WAF mit 75% Erfolgsrate.",
+    "longDescription": "Immobiliensuche Pro nutzt fortschrittliche nodriver-Technologie, um ausgeklügelte Anti-Bot-Systeme wie AWS WAF auf deutschen Immobilienportalen zu umgehen. Sammelt Anzeigen von ImmobilienScout24, Immonet und Immowelt mit intelligenter Duplikaterkennung und normalisierten Daten. Features: verbesserte CAPTCHA-Umgehung, portal-übergreifende Suche, Preisnormalisierung (kalt/warm/Kaufpreis), berechnete Metriken (Preis pro m²), Änderungsverfolgung für neue Anzeigen und Preisupdates, sowie Webhook-/E-Mail-Benachrichtigungen. Perfekt für Immobilienprofis, die zuverlässige Datenextraktion von geschützten Seiten benötigen.",
+    "supportUrl": "mailto:kontakt@barrierefix.de",
+    "isDeprecated": false,
+    "pricing": "paid",
+    "pricingModel": "per-event"
+  }
+}
