@@ -1,7 +1,8 @@
 {
-  "quickSearch": "Young Professional",
+  "quickSearch": "Benutzerdefiniert",
   "searchBuilders": [
     {
+      "portals": ["immowelt"],
       "dealType": "rent",
       "regions": ["Berlin"],
       "priceMax": 1500,
@@ -12,12 +13,12 @@
       "radiusKm": 10
     }
   ],
-  "maxResults": 5,
+  "maxResults": 1,
   "trackingMode": false,
   "removeDuplicates": true,
   "advancedOptions": {
     "debug": true,
-    "headless": false,
+    "headless": true,
     "concurrency": 1
   }
 }

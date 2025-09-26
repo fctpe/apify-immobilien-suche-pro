@@ -496,6 +496,9 @@ class ImmobilienScout24Crawler:
             if filters.get('postedSinceDays'):
                 params.append(f"publicationdate={filters['postedSinceDays']}")
 
+            # Sorting - newest listings first (API uses -publishDate for descending order)
+            params.append("sorting=-publishDate")
+
             # Combine URL and parameters
             if params:
                 url = f"{base_url}?" + "&".join(params)
@@ -981,6 +984,38 @@ class ImmobilienScout24Crawler:
                             additionalData.availableFrom = availableFromElem.textContent.trim();
                         }
 
+                        // Posted date / Creation date
+                        const postedDateSelectors = [
+                            '.is24qa-erstelldatum',
+                            '.is24qa-inseratdatum',
+                            '.is24qa-onlinesince',
+                            '[data-testid="publish-date"]',
+                            '.creation-date'
+                        ];
+
+                        for (const selector of postedDateSelectors) {
+                            const elem = document.querySelector(selector);
+                            if (elem && elem.textContent) {
+                                additionalData.postedDate = elem.textContent.trim();
+                                break;
+                            }
+                        }
+
+                        // If no specific posted date found, look for general date patterns
+                        if (!additionalData.postedDate) {
+                            const allElements = document.querySelectorAll('*');
+                            for (const elem of allElements) {
+                                const text = elem.textContent?.toLowerCase() || '';
+                                if (text.includes('online seit') || text.includes('inseriert am') || text.includes('erstellt am')) {
+                                    const dateMatch = elem.textContent.match(/(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})/);
+                                    if (dateMatch) {
+                                        additionalData.postedDate = `${dateMatch[3]}-${dateMatch[2].padStart(2, '0')}-${dateMatch[1].padStart(2, '0')}`;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
                         // Add additional data to main data object
                         Object.assign(data, additionalData);
 
@@ -1096,7 +1131,8 @@ class ImmobilienScout24Crawler:
                 address=address_str,
                 source="immobilienscout24",
                 description=data.get('description', ''),
-                pricePerSqm=price_per_sqm
+                pricePerSqm=price_per_sqm,
+                postedDate=data.get('postedDate')
             )
 
             return listing

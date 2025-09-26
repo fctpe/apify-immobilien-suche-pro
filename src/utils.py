@@ -111,10 +111,19 @@ def normalize_property_data(listing: PropertyListing, source_portal: str) -> Dic
     return listing.dict(exclude_none=True)
 
 
-def extract_price_from_text(text: str) -> Optional[float]:
+def extract_price_from_text(text) -> Optional[float]:
     """Extract price from German text."""
     if not text:
         return None
+
+    # Handle non-string types
+    if not isinstance(text, str):
+        if isinstance(text, dict):
+            return None
+        try:
+            text = str(text)
+        except Exception:
+            return None
 
     # Remove currency symbols and spaces
     clean_text = re.sub(r'[€\s]', '', text)
@@ -133,10 +142,19 @@ def extract_price_from_text(text: str) -> Optional[float]:
     return None
 
 
-def extract_area_from_text(text: str) -> Optional[float]:
+def extract_area_from_text(text) -> Optional[float]:
     """Extract area in square meters from German text."""
     if not text:
         return None
+
+    # Handle non-string types
+    if not isinstance(text, str):
+        if isinstance(text, dict):
+            return None
+        try:
+            text = str(text)
+        except Exception:
+            return None
 
     # Look for patterns like "85,5 m²" or "85.5m²"
     pattern = r'(\d+(?:[,.]\d+)?)\s*m²?'
@@ -153,10 +171,19 @@ def extract_area_from_text(text: str) -> Optional[float]:
     return None
 
 
-def extract_rooms_from_text(text: str) -> Optional[int]:
+def extract_rooms_from_text(text) -> Optional[int]:
     """Extract number of rooms from German text."""
     if not text:
         return None
+
+    # Handle non-string types
+    if not isinstance(text, str):
+        if isinstance(text, dict):
+            return None
+        try:
+            text = str(text)
+        except Exception:
+            return None
 
     # Look for patterns like "3 Zimmer" or "3-Zimmer"
     pattern = r'(\d+)(?:\s*[-.]?\s*(?:Zimmer|Zi\.?))'

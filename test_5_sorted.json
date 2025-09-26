@@ -1,0 +1,16 @@
+{
+  "quickSearch": "Benutzerdefiniert",
+  "searchBuilders": [{
+    "portals": ["immowelt"],
+    "dealType": "rent",
+    "regions": ["Berlin"],
+    "priceMax": 1500,
+    "sizeMin": 50,
+    "roomsMin": 2
+  }],
+  "maxResults": 5,
+  "advancedOptions": {
+    "debug": true,
+    "headless": true
+  }
+}

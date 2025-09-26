@@ -1,15 +1,25 @@
 {
-  "maxResults": 5,
-  "trackingMode": false,
-  "dedupeLevel": "cross_portal",
-  "concurrency": 1,
-  "proxyCountry": "DE",
-  "complianceMode": true,
-  "debug": true,
-  "headless": false,
-  "searchUrls": [
+  "quickSearch": "Benutzerdefiniert",
+  "searchBuilders": [
     {
-      "url": "https://www.immobilienscout24.de/Suche/de/berlin/berlin/wohnung-mieten?price=0-1500&livingspace=50-&numberofrooms=2-&radius=10"
+      "portals": [
+        "immoscout24",
+        "immowelt"
+      ],
+      "dealType": "rent",
+      "regions": [
+        "Berlin"
+      ],
+      "priceMax": 1500,
+      "sizeMin": 50,
+      "roomsMin": 2
     }
-  ]
+  ],
+  "maxResults": 20,
+  "trackingMode": false,
+  "removeDuplicates": true,
+  "advancedOptions": {
+    "debug": true,
+    "headless": true
+  }
 }

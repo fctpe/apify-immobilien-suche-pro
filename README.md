@@ -5,6 +5,7 @@ Fortschrittlicher Immobilien-Aggregator für deutsche Portale mit verbesserter A
 ## 🚀 Funktionen
 
 - **Portal-übergreifende Suche**: Durchsucht mehrere deutsche Immobilienportale gleichzeitig
+- **Dynamische Standortauflösung**: Konvertiert Stadtnamen automatisch zu portal-spezifischen Standort-IDs
 - **Verbesserte Anti-Erkennung**: Umgeht AWS WAF und andere Anti-Bot-Systeme mit 75% Erfolgsrate
 - **Intelligente Duplikaterkennung**: Filtert identische Anzeigen von verschiedenen Portalen heraus
 - **Normalisierte Daten**: Vereinheitlichte Preisangaben (kalt/warm/Kaufpreis) und benutzerfreundliche Ausgabe
@@ -15,8 +16,8 @@ Fortschrittlicher Immobilien-Aggregator für deutsche Portale mit verbesserter A
 ## 📊 Unterstützte Portale
 
 - **ImmobilienScout24** - Deutschlands größtes Immobilienportal
-- **Immonet** - Umfassende Immobiliensuche
-- **Immowelt** - Regionale und überregionale Angebote
+- **Immowelt** - Regionale und überregionale Angebote mit dynamischer Standortauflösung
+- **Immonet** - (In Entwicklung)
 
 ## 🏠 Anwendungsfälle
 
@@ -37,6 +38,7 @@ Wählen Sie eine Schnellsuche-Vorlage aus:
   "quickSearch": "Berufseinsteiger",
   "searchBuilders": [
     {
+      "portals": ["immoscout24", "immowelt"],
       "regions": ["Berlin"],
       "dealType": "rent",
       "priceMax": 1500,
@@ -55,12 +57,14 @@ Wählen Sie eine Schnellsuche-Vorlage aus:
   "quickSearch": "Benutzerdefiniert",
   "searchBuilders": [
     {
+      "portals": ["immoscout24", "immowelt"],
       "regions": ["München", "Hamburg"],
       "dealType": "rent",
       "propertyTypes": ["apartment"],
       "priceMax": 2000,
       "priceMin": 800,
       "sizeMin": 60,
+      "sizeMax": 120,
       "roomsMin": 2,
       "roomsMax": 4,
       "features": ["balcony", "elevator", "parking"],
@@ -88,11 +92,13 @@ Wählen Sie eine Schnellsuche-Vorlage aus:
 
 | Parameter | Beschreibung | Beispiel |
 |-----------|--------------|----------|
+| `portals` | Zu durchsuchende Portale | `["immoscout24", "immowelt"]` |
 | `regions` | Städte oder Gebiete | `["Berlin", "München"]` |
 | `dealType` | Miete oder Kauf | `"rent"` oder `"sale"` |
 | `propertyTypes` | Immobilientypen | `["apartment", "house"]` |
 | `priceMax` | Maximales Budget (€) | `1500` |
 | `sizeMin` | Mindestgröße (m²) | `60` |
+| `sizeMax` | Maximalgröße (m²) | `120` |
 | `roomsMin` | Mindestanzahl Zimmer | `2` |
 | `features` | Gewünschte Ausstattung | `["balcony", "parking"]` |
 

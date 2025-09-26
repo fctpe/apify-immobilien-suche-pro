@@ -14,7 +14,7 @@ class SearchUrl(BaseModel):
 
 class SearchBuilder(BaseModel):
     """User-friendly search builder configuration."""
-    portals: Optional[List[str]] = Field(default=['immoscout24'], description="Target portals")
+    portals: Optional[List[str]] = Field(default=['immoscout24', 'immowelt'], description="Target portals")
     dealType: str = Field(..., description="rent or sale")
     propertyTypes: Optional[List[str]] = Field(default=None, description="Property types to search")
     regions: List[str] = Field(..., description="Cities or regions to search")
@@ -22,6 +22,7 @@ class SearchBuilder(BaseModel):
     priceMin: Optional[int] = Field(default=None, description="Minimum price in EUR")
     priceMax: Optional[int] = Field(default=None, description="Maximum price in EUR")
     sizeMin: Optional[int] = Field(default=None, description="Minimum size in sqm")
+    sizeMax: Optional[int] = Field(default=None, description="Maximum size in sqm")
     roomsMin: Optional[int] = Field(default=None, description="Minimum number of rooms")
     roomsMax: Optional[int] = Field(default=None, description="Maximum number of rooms")
     furnished: Optional[str] = Field(default=None, description="furnished, unfurnished, partly_furnished")
@@ -68,7 +69,12 @@ class ActorInput(BaseModel):
 
     @validator('quickSearch')
     def validate_quick_search(cls, v):
-        valid_templates = ["Student Room", "Young Professional", "Family Apartment", "Luxury Home", "Investment Property", "Custom"]
+        valid_templates = [
+            # English terms (for backward compatibility)
+            "Student Room", "Young Professional", "Family Apartment", "Luxury Home", "Investment Property", "Custom",
+            # German terms
+            "Studentenzimmer", "Berufseinsteiger", "Familienwohnung", "Luxusimmobilie", "Kapitalanlage", "Benutzerdefiniert"
+        ]
         if v and v not in valid_templates:
             raise ValueError(f'quickSearch must be one of: {valid_templates}')
         return v

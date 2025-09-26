@@ -17,6 +17,7 @@
       "description": "Konfigurieren Sie Ihre Immobiliensuchkriterien",
       "default": [
         {
+          "portals": ["immoscout24", "immowelt"],
           "dealType": "rent",
           "regions": ["Berlin"],
           "priceMax": 1500,
@@ -30,6 +31,16 @@
       "items": {
         "type": "object",
         "properties": {
+          "portals": {
+            "title": "🌐 Immobilienportale",
+            "type": "array",
+            "description": "Welche Portale durchsuchen (ImmobilienScout24, Immowelt)?",
+            "items": {
+              "type": "string",
+              "enum": ["immoscout24", "immowelt"]
+            },
+            "editor": "select"
+          },
           "regions": {
             "title": "📍 Standort",
             "type": "array",
@@ -82,6 +93,13 @@
             "title": "📏 Mindestgröße (m²)",
             "type": "integer",
             "description": "Wie viel Wohnfläche benötigen Sie? (Quadratmeter)",
+            "minimum": 0,
+            "editor": "number"
+          },
+          "sizeMax": {
+            "title": "📐 Maximalgröße (m²)",
+            "type": "integer",
+            "description": "Optional: Maximale Wohnfläche (leer lassen für unbegrenzt)",
             "minimum": 0,
             "editor": "number"
           },

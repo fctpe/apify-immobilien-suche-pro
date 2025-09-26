@@ -1,16 +1,15 @@
 {
-  "source": "immobilienscout24",
-  "sourceId": "151893242",
-  "url": "https://www.immobilienscout24.de/expose/151893242",
-  "title": "Neubau-Erstbezug! Riesengroße 2-Zimmer-Wohnung inkl. Einbauküche und Loggia",
+  "source": "immowelt",
+  "sourceId": "2d166f27-75ee-47d0-8a83-cea94fc7e2e8",
+  "url": "",
+  "title": "Wohnung 54 m² 148 € zur Miete Ahrensfelde,Ahrensfelde (16356)",
   "dealType": "rent",
-  "propertyType": "Sonstige",
-  "description": "Im grünen Norden Berlins, inmitten reizvoller Natur und unweit des Tegeler Sees entsteht \"MyTegel\". Das neue, gemischte Stadtquartier verfügt über flexible Officeflächen, insgesamt 199 Wohnungen von 1- bis 4-Zimmern, eine Kita und einen großzügigen grünen Innenhof. \n\nDie Gebäude auf dem Areal sind mit dem LEED Gold Zertifikat für ökologisches Bauen und dem Wired Score Gold Zertifikat für digitale Konnektivität ausgezeichnet. My Tegel ist ein lebenswerter, inspirierender Ort zum Arbeiten, Wohnen und Erholen, der Vielfalt und Lebensqualität mit optimalen Nutzungsarten und kurzen Wegen vereint. \n\nIn den beiden Wohngebäuden sind sowohl möblierte als auch unmöblierte Wohnungen geplant. Der Tegeler See, die denkmalgeschützten Hallen Am Borsigturm und die neue Kindertagesstätte mit 70 Plätzen auf der großzügigen Außenanlage bieten den künftigen Bewohnenden eine perfekte Infrastruktur. \n\nDer Büroneubau in der verlängerten Egellsstraße dient zugleich als Lärmschutz, sodass ein geschütztes und für die Nachbarschaft offenes Quartier entsteht. Ausgleich und frische Luft bietet der großflächige MyTegel Innenhof. \n\nDer Altbaumbestand aus Schwarz-Pappeln, Winterlinden, Spitz-Ahorn und Sand-Birken wird mit artenschutzgerechter Bepflanzung ergänzt und gestalterisch mit Frei- und Spielflächen, Sitzmöglichkeiten und Wegen aufgearbeitet. Der Quartiersplatz wird dabei zentraler Nachbarschaftstreffpunkt.",
-  "address": "Biedenkopfer Str. 44-54,\n          Tegel, 13507 Berlin",
-  "price": 1435.0,
-  "size": 65.48,
-  "pricePerSqm": 21.92,
+  "propertyType": "apartment",
+  "address": "Ahrensfelde,Ahrensfelde (16356)",
+  "price": 148.0,
+  "size": 54.0,
+  "pricePerSqm": 2.74,
   "features": [],
   "images": [],
-  "extractedDate": "2025-09-25T10:25:00.002415"
+  "extractedDate": "2025-09-26T12:13:48.198357"
 }
